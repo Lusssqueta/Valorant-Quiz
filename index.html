@@ -3,33 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="darkmode.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Valorant Quiz</title>
   </head>
   <body>
     <div class="main">
       <header>
-        <img class="imagem" src="./Imagens/be188b13b1219d11e68d0006beb12547-removebg-preview.png" alt="Logo Valorant">
-        <h1>Teste seus conhecimentos</h1>
+        <h1>Desafie seus limites</h1>
+        <img
+        class="imagem valorant"
+        src="./Imagens/VALORANT.png"
+        alt="Logo Valorant"
+        />
+        <img
+        class="imagem premier"
+        src="./Imagens/PREMIER.png"
+        alt="Logo Valorant"
+        />
+        <label class="switch">
+          <input id="theme-toggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
       </header>
-      <div id="quiz"></div>
 
-      <template>
-        <div class="quiz-item">
-          <h3>Pergunta 01</h3>
-          <dl>
-            <dt>
-              <input type="radio" name="item" value="0">
-              <span>Resposta A</span>
-            </dt>
-          </dl>
+      <form onsubmit="submitForm(event)">
+        <div id="acertos" class="quiz-answer-container">
+          <div class="quiz-answer-label">
+            <strong>Acertos</strong>
+            <span>? / 15</span>
+          </div>
+          <div
+            id="quiz-number-label-container"
+            class="quiz-number-label-container"
+          ></div>
+          <button type="submit">Enviar</button>
+        </div>
+
+        <div id="quiz"></div>
+      </form>
+
+      <template id="quiz-item-template">
+        <div class="quiz-item-container">
+          <div class="quiz-item">
+            <div id="question" class="quiz-question">Pergunta 01</div>
+            <span id="question-category" class="question-category"></span>
+            <dl class="answer-container">
+              <dt class="quiz-answer">
+                <span class="answer-indicator">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="correct-indicator"
+                  >
+                    <path
+                      d="M10 20L17.071 27.071L31.2117 12.9289"
+                      stroke="#ECE8E1"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="wrong-indicator"
+                  >
+                    <path
+                      d="M26.6663 26.6666L19.9997 20M19.9997 20L13.333 13.3333M19.9997 20L26.6663 13.3333M19.9997 20L13.333 26.6666"
+                      stroke="#ECE8E1"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <input type="radio" name="item" value="0" required />
+                <label>Resposta A</label>
+              </dt>
+            </dl>
+          </div>
         </div>
       </template>
 
-      <div id="acertos">
-        <strong>Acertos</strong>
-        <span>0 de 10</span>
-      </div>
+      <template id="quiz-question-template">
+        <div class="question-number"></div>
+      </template>
     </div>
   </body>
   <script src="script.js"></script>
